@@ -1,5 +1,6 @@
 package com.gdsc.frjns.news.domain.model;
 
+import com.gdsc.frjns.news.dto.NewsResponse;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,4 +31,13 @@ public class News {
     //자세한 스케줄 내용
     @Column(name = "detail", nullable = false)
     private String detail;
+
+    public NewsResponse toResponse(){
+        return NewsResponse.builder()
+                .id(id)
+                .startDate(startDate)
+                .endDate(endDate)
+                .detail(detail)
+                .build();
+    }
 }
