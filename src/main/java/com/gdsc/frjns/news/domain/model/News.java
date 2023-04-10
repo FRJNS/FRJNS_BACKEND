@@ -17,8 +17,6 @@ import java.util.Date;
 @DynamicInsert
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 public class News {
 
     // 아이디 자동 생성 (Primary Key)

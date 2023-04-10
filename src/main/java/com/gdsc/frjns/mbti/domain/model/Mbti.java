@@ -1,12 +1,14 @@
 package com.gdsc.frjns.mbti.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
 @Entity
+@Table(name = "mbti")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 public class Mbti {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
