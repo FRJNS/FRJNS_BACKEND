@@ -1,33 +1,50 @@
 package com.gdsc.frjns.news.domain.model;
 
+import com.gdsc.frjns.news.dto.NewsDTO;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Entity
-@Table(name = "news")
+@Table(name="news")
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
+@NoArgsConstructor
 @AllArgsConstructor
 public class News {
 
     // 아이디 자동 생성 (Primary Key)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(updatable = false,unique = true,nullable = false)
     private Long id;
 
     // 스케줄 시작날짜
-    @Column(name = "start_date")
-    private LocalDate startDate;
+    @Temporal(TemporalType.DATE)
+    @Column
+    private Date start_date;
 
     // 스케줄 종료날짜
-    @Column(name = "end_date")
-    private LocalDate endDate;
+    @Temporal(TemporalType.DATE)
+    @Column
+    private Date end_date;
 
     //자세한 스케줄 내용
-    @Column(name = "detail", nullable = false)
+    @Column(nullable = false)
     private String detail;
+
+    public NewsDTO toDTO(){
+        return NewsDTO.builder()
+                .id(id)
+                .start_date(start_date)
+                .end_date(end_date)
+                .detail(detail)
+                .build();
+    }
 }
