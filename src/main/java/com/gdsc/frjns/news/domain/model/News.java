@@ -28,12 +28,12 @@ public class News {
     // 스케줄 시작날짜
     @Temporal(TemporalType.DATE)
     @Column
-    private Date start_date;
+    private Date start;
 
     // 스케줄 종료날짜
     @Temporal(TemporalType.DATE)
     @Column
-    private Date end_date;
+    private Date end;
 
     //자세한 스케줄 내용
     @Column(nullable = false)
@@ -42,8 +42,8 @@ public class News {
     public NewsDTO toDTO(){
         return NewsDTO.builder()
                 .id(id)
-                .start_date(start_date)
-                .end_date(end_date)
+                .start(start)
+                .end(end)
                 .detail(detail)
                 .build();
     }

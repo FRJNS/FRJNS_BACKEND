@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 public class NewsDTO {
     private Long id;
-    private Date start_date;
-    private Date end_date;
+    private Date start;
+    private Date end;
     private String detail;
 }
