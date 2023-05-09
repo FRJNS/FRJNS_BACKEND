@@ -1,6 +1,7 @@
 package com.gdsc.frjns.news.controller;
 
 import com.gdsc.frjns.news.domain.model.News;
+import com.gdsc.frjns.news.dto.NewsDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,25 +11,25 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminController {
     @PostMapping("/admin/{id}")
-    public ResponseEntity<String> addNewsAdmin(@PathVariable("id") Long id, @RequestBody NewsResponse newsResponse) throws Exception {
+    public ResponseEntity<String> addNewsAdmin(@PathVariable("id") Long id, @RequestBody NewsDTO newsDTO) throws Exception {
 
         if(id.isEmpty()) {
             throw new Exception("id 비어있음");
         }
-        if(newsResponse.getStart() == null) {
+        if(newsDTO.getStart() == null) {
             throw new Exception("시작 날짜 null");
         }
-        if(newsResponse.getEnd() == null) {
+        if(newsDTO.getEnd() == null) {
             throw new Exception("끝나는 날짜 null");
         }
 
         //if(!checkDate(new SimpleDateFormat("yyyy-MM-dd").format(fineRequestDto.getDate()))) {
         //    throw new Exception("날짜 포맷 오류" + fineRequestDto.getDate().toString());
         //}
-        if(newsResponse.getDetail() == null) {
+        if(newsDTO.getDetail() == null) {
             throw new Exception("스케쥴 내용 null");
         }
-        newsService.addNews(id, newsResponse);
+        newsService.addNews(id, news);
         return ResponseEntity.ok("added schedule successfully");
     }
 
