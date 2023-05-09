@@ -1,5 +1,6 @@
 package com.gdsc.frjns.news.dto;
 
+import com.gdsc.frjns.news.domain.model.News;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,13 @@ public class NewsDTO {
     private Date start;
     private Date end;
     private String detail;
+
+    public News toEntity(){
+        return News.builder()
+                .id(id)
+                .start(start)
+                .end(end)
+                .detail(detail)
+                .build();
+    }
 }
