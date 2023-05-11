@@ -46,6 +46,9 @@ logging:
           jdbc:
             bind: trace
 
+jwt:
+  secret: ${JWT_SECRET}
+  token-validity-milliseconds: 86400000
 ---
 
 spring:
@@ -86,5 +89,5 @@ server:
     include-stacktrace: never
 
 jwt:
-  secret: eyJhbGciOiJIUzI1N.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4MTM2MjcxMSwiaWF0IjoxNjgxMzYyNzExfQ.nlIgX05nhUNH-ibUlo7VBkTWuPjXXhjsGbpwFZOGGpw
+  secret: ${JWT_SECRET}
   token-validity-milliseconds: 86400000

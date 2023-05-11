@@ -29,11 +29,11 @@ public class TokenProvider {
     /*
        초기화
        key: application.yml에 작성한 (jwt: secret) 값을 가져와서 JWT 만들 때 사용하는 암호화 키 값을 생성
-       validityTime: application.yml에 작성한 (jwt: token-validity-in-milliseconds) 값을 가져와서 만료 일자 지정
+       validityTime: application.yml에 작성한 (jwt: token-validity-milliseconds) 값을 가져와서 만료 일자 지정
     */
     public TokenProvider(
             @Value("${jwt.secret}") String secretKey,
-            @Value("${jwt.token-validity-in-milliseconds}") long validityTime) {
+            @Value("${jwt.token-validity-milliseconds}") long validityTime) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.validityTime = validityTime;
