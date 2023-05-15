@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @RequiredArgsConstructor
@@ -14,15 +15,15 @@ import java.util.Date;
 @Data
 public class NewsDTO {
     private Long id;
-    private Date start;
-    private Date end;
+    private LocalDate start;
+    private LocalDate end;
     private String detail;
 
     public News toEntity(){
         return News.builder()
                 .id(id)
-                .start(start)
-                .end(end)
+                .startDate(start)
+                .endDate(end)
                 .detail(detail)
                 .build();
     }

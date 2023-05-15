@@ -18,7 +18,7 @@ public class NewsController {
 
     private final NewsService newsService;
 
-    @GetMapping("/api/news")
+    @GetMapping("/news")
     public ResponseEntity<Slice<NewsDTO>> newsList(@PageableDefault(size=5)Pageable pageable) {
         Slice<NewsDTO> newsDTOS = newsService.findAll(pageable);
         return ResponseEntity.ok(newsDTOS);

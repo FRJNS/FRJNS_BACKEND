@@ -27,10 +27,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     // DB에 해당하는 User 값이 존재한다면 UserDetails 객체로 리턴
     private UserDetails createUserDetails(Admin admin) {
-        return User.builder()
+        UserDetails build = User.builder()
                 .username(admin.getUsername())
                 .password(passwordEncoder.encode(admin.getPassword()))
                 .roles(admin.getRoles().toArray(new String[0]))
                 .build();
+        return build;
     }
 }

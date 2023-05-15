@@ -66,17 +66,11 @@ public class TokenProvider {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
 
-        // RefreshToken 생성
-        String refreshToken = Jwts.builder()
-                .setExpiration(tokenExpiredTime)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
 
         // TokenDTO로 리턴
         return TokenDTO.builder()
                 .grantType("Bearer") // Bearer 방식
                 .accessToken(accessToken) // AccessToken
-                .refreshToken(refreshToken) // RefreshToken
                 .build();
     }
 
