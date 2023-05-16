@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Schema(description = "스케줄 요청 응답")
 @RequiredArgsConstructor
@@ -21,10 +19,10 @@ public class NewsDTO {
     private Long id;
   
     @Schema(description = "스케줄 시작 날짜", example = "2023-01-01")
-    private LocalDate start_date;
+    private LocalDate startDate;
   
     @Schema(description = "스케줄 종료 날짜", example = "2023-01-03")
-    private LocalDate end_date;
+    private LocalDate endDate;
   
     @Schema(description = "스케줄 상세", example = "OMG 음반 발매")
     private String detail;

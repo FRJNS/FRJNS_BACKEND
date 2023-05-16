@@ -1,9 +1,7 @@
 package com.gdsc.frjns.news.controller;
 
 import com.gdsc.frjns.common.annotation.CustomPageableAsQueryParam;
-import com.gdsc.frjns.mbti.dto.MbtiResponse;
 import com.gdsc.frjns.news.dto.NewsDTO;
-import com.gdsc.frjns.news.dto.NewsResponse;
 import com.gdsc.frjns.news.service.NewsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -36,7 +34,6 @@ public class NewsController {
     @CustomPageableAsQueryParam
     public ResponseEntity<Slice<NewsDTO>> newsList(@PageableDefault(size=5)Pageable pageable) {
         Slice<NewsDTO> newsDTOS = newsService.findAll(pageable);
-        return ResponseEntity.ok(newsDTOS);
 
         if (newsDTOS.isEmpty()) {
             return ResponseEntity.noContent().build();

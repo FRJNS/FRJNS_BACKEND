@@ -1,6 +1,6 @@
 package com.gdsc.frjns.news.domain.model;
 
-import com.gdsc.frjns.news.dto.NewsResponse;
+import com.gdsc.frjns.news.dto.NewsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,8 +35,8 @@ public class News {
 
     private String detail;
 
-    public NewsResponse toResponse(){
-        return NewsResponse.builder()
+    public NewsDTO toDTO(){
+        return NewsDTO.builder()
                 .id(id)
                 .startDate(startDate)
                 .endDate(endDate)

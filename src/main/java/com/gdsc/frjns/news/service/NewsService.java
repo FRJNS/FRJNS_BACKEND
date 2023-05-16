@@ -2,7 +2,7 @@ package com.gdsc.frjns.news.service;
 
 import com.gdsc.frjns.news.domain.model.News;
 import com.gdsc.frjns.news.domain.repository.NewsRepository;
-import com.gdsc.frjns.news.dto.NewsResponse;
+import com.gdsc.frjns.news.dto.NewsDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -16,7 +16,7 @@ public class NewsService {
 
 
     //전체 스케줄 불러오기
-    public Slice<NewsResponse> findAll(Pageable pageable){
+    public Slice<NewsDTO> findAll(Pageable pageable){
         Slice<News> slice = newsRepository.findAllBy(pageable);
         return slice.map(News::toDTO);
     }
