@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class NewsDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private String detail;
+
 
     public News toEntity(){
         return News.builder()

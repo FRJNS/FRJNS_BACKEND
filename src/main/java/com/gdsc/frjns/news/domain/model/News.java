@@ -28,12 +28,12 @@ public class News {
 
     // 스케줄 시작날짜
     @Temporal(TemporalType.DATE)
-    @Column(name="start_date")
+    @Column(name="startDate")
     private LocalDate startDate;
 
     // 스케줄 종료날짜
     @Temporal(TemporalType.DATE)
-    @Column(name="end_date")
+    @Column(name="endDate")
     private LocalDate endDate;
 
     //자세한 스케줄 내용
