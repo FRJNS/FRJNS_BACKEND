@@ -1,22 +1,16 @@
 package com.gdsc.frjns.news.domain.model;
 
-import com.gdsc.frjns.news.dto.NewsDTO;
+import com.gdsc.frjns.news.dto.NewsResponse;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
+import lombok.*;
 
 import java.time.LocalDate;
 
-
 @Getter
 @Entity
-@Table(name="news")
+@Table(name = "news")
 @Builder
-@DynamicInsert
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class News {
 
@@ -38,10 +32,11 @@ public class News {
 
     //자세한 스케줄 내용
     @Column(name = "detail")
+
     private String detail;
 
-    public NewsDTO toDTO(){
-        return NewsDTO.builder()
+    public NewsResponse toResponse(){
+        return NewsResponse.builder()
                 .id(id)
                 .startDate(startDate)
                 .endDate(endDate)

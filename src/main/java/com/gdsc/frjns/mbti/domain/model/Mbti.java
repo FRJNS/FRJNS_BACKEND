@@ -1,5 +1,6 @@
 package com.gdsc.frjns.mbti.domain.model;
 
+import com.gdsc.frjns.mbti.dto.MbtiResponse;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,13 @@ public class Mbti {
 
     @Column(name = "content", nullable = false)
     private String content;
+
+    public MbtiResponse toResponse() {
+        return MbtiResponse.builder()
+                .sourceMbti(sourceMbti)
+                .targetName(targetName)
+                .imageUrl(imageUrl)
+                .content(content)
+                .build();
+    }
 }
