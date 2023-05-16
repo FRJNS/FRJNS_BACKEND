@@ -69,7 +69,7 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: validate #엔티티와 테이블이 정상 매핑되었는지만 확인
+      ddl-auto: update #엔티티와 테이블이 정상 매핑되었는지만 확인
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
