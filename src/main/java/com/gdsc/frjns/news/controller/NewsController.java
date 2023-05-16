@@ -34,8 +34,9 @@ public class NewsController {
             }
     )
     @CustomPageableAsQueryParam
-    public ResponseEntity<Slice<NewsResponse>> newsList(@PageableDefault(size=5)Pageable pageable) {
-        Slice<NewsResponse> newsDTOS = newsService.findAll(pageable);
+    public ResponseEntity<Slice<NewsDTO>> newsList(@PageableDefault(size=5)Pageable pageable) {
+        Slice<NewsDTO> newsDTOS = newsService.findAll(pageable);
+        return ResponseEntity.ok(newsDTOS);
 
         if (newsDTOS.isEmpty()) {
             return ResponseEntity.noContent().build();

@@ -17,19 +17,22 @@ public class News {
     // 아이디 자동 생성 (Primary Key)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     // 스케줄 시작날짜
-    @Column(name = "start_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name="startDate")
     private LocalDate startDate;
 
     // 스케줄 종료날짜
-    @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name="endDate")
     private LocalDate endDate;
 
     //자세한 스케줄 내용
-    @Column(name = "detail", nullable = false)
+    @Column(name = "detail")
+
     private String detail;
 
     public NewsResponse toResponse(){
