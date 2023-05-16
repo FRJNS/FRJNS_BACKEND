@@ -15,15 +15,15 @@ import java.util.Date;
 @Data
 public class NewsDTO {
     private Long id;
-    private LocalDate start;
-    private LocalDate end;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String detail;
 
     public News toEntity(){
         return News.builder()
                 .id(id)
-                .startDate(start)
-                .endDate(end)
+                .startDate(startDate)
+                .endDate(endDate)
                 .detail(detail)
                 .build();
     }

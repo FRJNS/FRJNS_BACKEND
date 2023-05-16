@@ -25,8 +25,8 @@ public class NewsService {
     public void addNews(NewsDTO newsRequestDTO){
         News news = new News();
         newsRequestDTO.setId(newsRequestDTO.getId());
-        newsRequestDTO.setStart(newsRequestDTO.getStart());
-        newsRequestDTO.setEnd(newsRequestDTO.getEnd());
+        newsRequestDTO.setStartDate(newsRequestDTO.getStartDate());
+        newsRequestDTO.setEndDate(newsRequestDTO.getEndDate());
         newsRequestDTO.setDetail(newsRequestDTO.getDetail());
         newsRepository.save(news);
     }

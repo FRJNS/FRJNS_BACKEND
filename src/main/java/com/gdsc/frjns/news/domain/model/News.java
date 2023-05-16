@@ -43,8 +43,8 @@ public class News {
     public NewsDTO toDTO(){
         return NewsDTO.builder()
                 .id(id)
-                .start(startDate)
-                .end(endDate)
+                .startDate(startDate)
+                .endDate(endDate)
                 .detail(detail)
                 .build();
     }

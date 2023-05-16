@@ -31,10 +31,10 @@ public class AdminController {
         if(newsRequestDTO.getId() == null) {
             throw new Exception("id 비어있음");
         }
-        if(newsRequestDTO.getStart() == null) {
+        if(newsRequestDTO.getStartDate() == null) {
             throw new Exception("시작 날짜 null");
         }
-        if(newsRequestDTO.getEnd() == null) {
+        if(newsRequestDTO.getEndDate() == null) {
             throw new Exception("끝나는 날짜 null");
         }
 
