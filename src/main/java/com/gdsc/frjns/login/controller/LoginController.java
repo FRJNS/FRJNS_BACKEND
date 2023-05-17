@@ -35,7 +35,7 @@ public class LoginController {
 
     // 로그인 시 권한에 해당하는 화면으로 리다이렉션
     @GetMapping("/login")
-    public RedirectView login2(Authentication authentication) throws Exception{
+    public RedirectView loginRedirect(Authentication authentication) throws Exception{
         RedirectView redirectView = new RedirectView();
         if(authentication.getAuthorities().toArray()[0].toString().equals("ROLE_ADMIN")) {
             redirectView.setUrl("/api/admin");

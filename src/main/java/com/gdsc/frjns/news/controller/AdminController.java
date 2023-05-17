@@ -27,31 +27,17 @@ public class AdminController {
     }
     @PostMapping("/admin")
     public ResponseEntity<String> addNewsAdmin(@RequestBody NewsDTO newsRequestDTO) throws Exception {
-
-        if(newsRequestDTO.getId() == null) {
-            throw new Exception("id 비어있음");
-        }
-        if(newsRequestDTO.getStartDate() == null) {
-            throw new Exception("시작 날짜 null");
-        }
-        if(newsRequestDTO.getEndDate() == null) {
-            throw new Exception("끝나는 날짜 null");
-        }
-
-        if(newsRequestDTO.getDetail() == null) {
-            throw new Exception("스케줄 내용 null");
-        }
         newsService.addNews(newsRequestDTO);
         return ResponseEntity.ok("added schedule successfully");
     }
 
-    @DeleteMapping("/admin")
-    public ResponseEntity<String> deleteNews (@RequestBody NewsDTO newsRequestDTO) {
-        if(newsRequestDTO == null) {
+    @DeleteMapping("/admin/{id}")
+    public ResponseEntity<String> deleteNews (@PathVariable("id") Long id) {
+        if(id == null) {
             return ResponseEntity.ok("없는 스케줄입니다.");
         }
         else {
-            newsService.deleteNews(newsRequestDTO);
+            newsService.deleteNews(id);
             return ResponseEntity.ok("deleted schedule successfully");
         }
     }
