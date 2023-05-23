@@ -2,16 +2,14 @@ package com.gdsc.frjns.news.dto;
 
 import com.gdsc.frjns.news.domain.model.News;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Schema(description = "스케줄 요청 응답")
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
 @Data
 public class NewsDTO {

@@ -23,14 +23,11 @@ public class NewsService {
 
     //스케쥴 추가
     public News addNews(NewsDTO newsRequestDTO){
-        // newsRequestDTO.setDetail(String.valueOf(newsRepository.findById(id).get()));
-
         return newsRepository.save(newsRequestDTO.toEntity());
     }
 
     //스케쥴 삭제
-    public void deleteNews(NewsDTO newsRequestDTO) {
-        News news = newsRepository.findById(newsRequestDTO.getId()).get();
-        newsRepository.delete(news);
+    public void deleteNews(Long id) {
+        newsRepository.deleteById(id);
     }
 }
