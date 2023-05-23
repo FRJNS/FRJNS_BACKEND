@@ -38,7 +38,7 @@ public class LoginController {
     public RedirectView login2(Authentication authentication) throws Exception{
         RedirectView redirectView = new RedirectView();
         if(authentication.getAuthorities().toArray()[0].toString().equals("ROLE_ADMIN")) {
-            redirectView.setUrl("/api/admin");
+            redirectView.setUrl("/admin");
             return redirectView;
         }
         else {
