@@ -32,6 +32,9 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5', 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
+    implementation 'com.google.apis:google-api-services-youtube:v3-rev222-1.25.0'
+    implementation 'com.google.http-client:google-http-client-jackson2:1.36.0'
+    implementation 'com.google.api-client:google-api-client:1.32.1'
 }
 
 tasks.named('test') {
