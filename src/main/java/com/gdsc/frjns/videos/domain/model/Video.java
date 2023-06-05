@@ -1,5 +1,6 @@
 package com.gdsc.frjns.videos.domain.model;
 
+import com.gdsc.frjns.videos.dto.VideoResponse;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,4 +21,12 @@ public class Video {
 
     @Column(name = "title", nullable = false, length = 1000)
     private String title;
+
+    public VideoResponse toResponse() {
+        return VideoResponse.builder()
+                .id(id)
+                .title(title)
+                .url("https://www.youtube.com/watch?v=" + channelId)
+                .build();
+    }
 }
