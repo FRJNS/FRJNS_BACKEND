@@ -49,6 +49,9 @@ logging:
 jwt:
   secret: ${JWT_SECRET}
   token-validity-milliseconds: 86400000
+
+env:
+  key: ${YOUTUBE_KEY}
 ---
 
 spring:
@@ -91,3 +94,6 @@ server:
 jwt:
   secret: ${JWT_SECRET}
   token-validity-milliseconds: 86400000
+
+env:
+  key: ${YOUTUBE_KEY}
