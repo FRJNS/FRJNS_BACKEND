@@ -11,6 +11,7 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class VideoService {
-    private static final String API_KEY = "AIzaSyAs1bLuaAve9UlP4wYkq3ubPuqulLW764o";
+    @Value("${env.key}")
+    private String apiKey;
 
     private final VideoRepository videoRepository;
 
@@ -32,7 +34,7 @@ public class VideoService {
         YouTube youtube = getYouTubeService();
 
         YouTube.Search.List search = youtube.search().list("snippet");
-        search.setKey(API_KEY);
+        search.setKey(apiKey);
         search.setQ("뉴진스 세로직캠");
         search.setType("video");
         search.setMaxResults(50L); // 원하는 최대 결과 수
