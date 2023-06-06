@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class NewsService {
 
     //스케쥴 삭제
     public void deleteNews(Long id) {
-        News deleteNews = newsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id의 스케줄이 존재하지 않습니다."));
+        News deleteNews = newsRepository.findById(id).orElseThrow(() -> new NoSuchElementException("해당 id의 스케줄이 존재하지 않습니다."));
         newsRepository.deleteById(deleteNews.getId());
     }
 }

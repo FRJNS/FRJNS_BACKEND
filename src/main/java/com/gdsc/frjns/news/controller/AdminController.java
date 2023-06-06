@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestController
@@ -42,7 +43,7 @@ public class AdminController {
             description = "스케줄 추가하기",
             responses = {
                     @ApiResponse(responseCode = "200", description = "스케줄 추가 성공", content= @Content(schema=@Schema(implementation = NewsDTO.class))),
-                    @ApiResponse(responseCode = "403", description = "권한 없음")
+                    @ApiResponse(responseCode = "400", description = "잘못된 요청")
             }
     )
     public ResponseEntity<String> addNewsAdmin(@RequestBody NewsDTO newsRequestDTO) {
@@ -60,7 +61,8 @@ public class AdminController {
             description = "뉴스 id로 스케줄 삭제하기",
             responses = {
                     @ApiResponse(responseCode = "200", description = "스케줄 삭제 성공", content= @Content(schema=@Schema(implementation = NewsDTO.class))),
-                    @ApiResponse(responseCode = "403", description = "권한 없음")
+                    @ApiResponse(responseCode = "400", description = "잘못된 id"),
+                    @ApiResponse(responseCode = "404", description = "존재하지 않는 id")
             }
     )
     public ResponseEntity<String> deleteNews (@PathVariable("id") Long id) throws IllegalArgumentException {
@@ -69,6 +71,8 @@ public class AdminController {
             return ResponseEntity.ok("스케줄 삭제 완료");
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body(("잘못된 요청입니다."));
+        } catch (NoSuchElementException ex) {
+            return ResponseEntity.notFound().build();
         }
     }
 }
