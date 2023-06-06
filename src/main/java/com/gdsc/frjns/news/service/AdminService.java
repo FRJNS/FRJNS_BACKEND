@@ -21,7 +21,6 @@ public class AdminService {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final TokenProvider tokenProvider;
-    private final AdminRepository adminRepository;
 
     @Transactional
     public TokenDTO login(String id, String password){
@@ -36,11 +35,5 @@ public class AdminService {
         // 3. 인증된 정보를 기반으로 JWT 토큰 생성 후 리턴
         TokenDTO tokenDTO = tokenProvider.createToken(authentication);
         return tokenDTO;
-    }
-
-    public AdminDTO info (Principal principal){
-        String id = principal.getName();
-        Admin admin = adminRepository.findById(id).get();
-        return admin.toDTO();
     }
 }
