@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class NewsController {
-
     private final NewsService newsService;
 
     @GetMapping("/news")
@@ -32,7 +32,7 @@ public class NewsController {
             }
     )
     @CustomPageableAsQueryParam
-    public ResponseEntity<Slice<NewsDTO>> newsList(@PageableDefault(size=5)Pageable pageable) {
+    public ResponseEntity<Slice<NewsDTO>> newsList(@SortDefault(sort = "startDate") @PageableDefault(size=5)Pageable pageable) {
         Slice<NewsDTO> newsDTOS = newsService.findAll(pageable);
 
         if (newsDTOS.isEmpty()) {
