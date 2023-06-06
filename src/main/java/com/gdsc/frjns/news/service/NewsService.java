@@ -28,7 +28,7 @@ public class NewsService {
 
     // 전체 스케줄 불러오기
     public List<News> findAll() {
-        List<News> newsList = newsRepository.findAll(Sort.by(Sort.Direction.ASC, "startDate"));
+        List<News> newsList = newsRepository.findAll(Sort.by(Sort.Direction.DESC, "startDate"));
 
         return newsList;
     }
