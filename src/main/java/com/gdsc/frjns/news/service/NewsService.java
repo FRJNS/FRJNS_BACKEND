@@ -3,6 +3,7 @@ package com.gdsc.frjns.news.service;
 import com.gdsc.frjns.news.domain.model.News;
 import com.gdsc.frjns.news.domain.repository.NewsRepository;
 import com.gdsc.frjns.news.dto.NewsDTO;
+import com.gdsc.frjns.news.dto.NewsRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -33,7 +34,7 @@ public class NewsService {
     }
 
     //스케쥴 추가
-    public News addNews(NewsDTO newsRequestDTO){
+    public News addNews(NewsRequestDTO newsRequestDTO){
         return newsRepository.save(newsRequestDTO.toEntity());
     }
 

@@ -4,6 +4,7 @@ import com.gdsc.frjns.news.domain.model.News;
 import com.gdsc.frjns.news.domain.repository.AdminRepository;
 import com.gdsc.frjns.news.domain.repository.NewsRepository;
 import com.gdsc.frjns.news.dto.NewsDTO;
+import com.gdsc.frjns.news.dto.NewsRequestDTO;
 import com.gdsc.frjns.news.service.NewsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -46,7 +47,7 @@ public class AdminController {
                     @ApiResponse(responseCode = "400", description = "잘못된 요청")
             }
     )
-    public ResponseEntity<String> addNewsAdmin(@RequestBody NewsDTO newsRequestDTO) {
+    public ResponseEntity<String> addNewsAdmin(@RequestBody NewsRequestDTO newsRequestDTO) {
         try {
             newsService.addNews(newsRequestDTO);
             return ResponseEntity.ok("added schedule successfully");
